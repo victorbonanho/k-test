@@ -2,7 +2,11 @@
 
 ## Descrição
 
-Este é um projeto de API desenvolvido com Node.js e MongoDB, seguindo a arquitetura MVC (Model-View-Controller). A API permite a criação, leitura, atualização e deleção (CRUD) de clientes.
+- Este é um projeto de API desenvolvido com Node.js e MongoDB (Atlas), seguindo a arquitetura MVC (Model-View-Controller). A API permite o cadastro e login de clientes e a comunicação com o chatGPT ficando armazenado, na mesma collection do cadastro do cliente, o histórico de perguntas e respostas.
+
+- O root da aplicação se encontra no index.ts essa rota com versionamento encaminha para uma rota de instâncias com o serviço de chat e autenticação (apiRoutesV1.ts) e essa encaminha para as suas rotas respectivas. Podendo adicionar mais instâncias no projeto, ficando assim uma API com arquitetura escalável, durável e de compreensível manutenção com o seu padrão MVC.
+
+- Não é necessário rodar um banco de dados local pois estará disponível no MongoDB Atlas.
 
 ## Arquitetura
 
@@ -10,15 +14,11 @@ Este é um projeto de API desenvolvido com Node.js e MongoDB, seguindo a arquite
 - **View**: Não se aplica diretamente, pois esta é uma API, mas em um contexto de frontend, representaria a parte visual.
 - **Controller**: Lida com a lógica de negócios, processa as requisições e interage com o Model.
 
-## Estrutura do Projeto
-
-/src ├── controllers │ └── clientController.ts ├── models │ └── clientModel.ts ├── routes │ └── clientRoutes.ts └── index.ts
-
 ## Pré-requisitos
 
 - Node.js (versão 18 ou superior)
-- MongoDB Atlas para o banco de dados
-- Docker (opcional)
+- MongoDB Compass (opcional, conectar com MONGODB_URI disponível no .env)
+- Docker (reqcomendado para rodar local)
 
 1. Clone o repositório:
 
@@ -29,27 +29,72 @@ Este é um projeto de API desenvolvido com Node.js e MongoDB, seguindo a arquite
 
 - npm install
 
-3. Crie um arquivo .env na raiz do projeto se não houver e adicione a seguinte variável de ambiente:
-   MONGODB_URI=mongodb+srv://kowalski:dogLove!2124@testfullstackkenlo.lb8y6.mongodb.net/fullstackTest?retryWrites=true&w=majority&appName=Testfullstackkenlo
+3. O arquivo .env ficará diponível no repositório público até o término da avaliação deste teste.
 
 ## Usando Docker
 
-1. Execute o seguinte comando para construir e rodar o projeto:
+1. Execute os seguintes comandos para construir e rodar o projeto:
 
+- docker-compose down
 - docker-compose up --build
 
 2. A API estará acessível em http://localhost:3000.
 
 ## Usando Node.js diretamente
 
-1. npm start
+1. npm start ou npm run dev
 
-## Endpoints
+## Rodando o Teste Unitário
 
-POST /clients: Cria um novo cliente.
-GET /clients: Retorna todos os clientes.
-GET /clients/:id: Retorna um cliente específico pelo ID.
-PUT /clients/:id: Atualiza um cliente específico pelo ID.
-DELETE /clients/:id: Deleta um cliente específico pelo ID.
+1. npm run test:unit
+
+   Explicação: Rondando o teste com dados mock para testar a integridade da lógica do controle da aplicação.
+
+## Rodando o Teste de Integração e explicação
+
+1. npm run test:integration
+
+   Explicação: Utilizado o mongodb em memória para não afetar o banco de dados real (MongoMemoryServer) fazendo os testes essenciais para o funcionamento da API
+
+## Rodando todos os testes
+
+1. npm run test
+
+## Funcionamento com Postman ou derivados
+
+1. Cadastre um cliente
+
+- http://localhost:3000/api/v1/clients/register
+  Body exemplo:
+  {
+  "name": "João Silva",
+  "email": "joao@example.com",
+  "phone": "123456789",
+  "password": "senha123"
+  }
+
+2. Faça o login
+
+- http://localhost:3000/api/v1/clients/login
+  Body exemplo:
+  {
+  "email": "joao@example.com",
+  "password": "senha123"
+  }
+
+3. Copie o token gerado no login e insira no "Authorization" -> "Bearer Token"
+   e chame a API para conversar com o chatGPT:
+
+- http://localhost:3000/api/v1/clients/chat
+  Body exemplo:
+  {
+  "question": "Qual é a capital da França?"
+  }
+
+## Aplicação em produção diponível
+
+## CI/CD
+
+## SWAGGER
 
 **Sinta-se à vontade para ajustar qualquer parte conforme necessário! Se precisar de mais alguma coisa, é só avisar.**

@@ -1,7 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import clientRoutes from "./routes/clientRoutes";
+import apiRoutesV1 from "./routes/apiRoutesV1";
 
 dotenv.config();
 
@@ -20,9 +20,11 @@ mongoose
   .catch((err) => console.error("Erro ao conectar ao MongoDB", err));
 
 // Usar as rotas
-app.use(clientRoutes);
+app.use("/api/v1", apiRoutesV1);
 
 // Iniciar o servidor
-app.listen(3000, () => {
+const server = app.listen(3000, () => {
   console.log("API rodando na porta 3000");
 });
+
+export { app, server };

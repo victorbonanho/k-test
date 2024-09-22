@@ -1,21 +1,58 @@
-import mongoose from "mongoose";
+import mongoose, { Schema, Document } from "mongoose";
 
-const clientSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  phone: {
-    type: String,
-    required: true,
-  },
-}, { timestamps: true });
+interface IChatHistory {
+  question: string;
+  answer: string;
+  timestamp: Date;
+}
 
-const Client = mongoose.model("Client", clientSchema);
+export interface IClient extends Document {
+  name: string;
+  email: string;
+  phone: string;
+  password: string;
+  chatHistory: IChatHistory[];
+}
+
+const clientSchema: Schema = new Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    phone: {
+      type: String,
+      required: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+    chatHistory: [
+      {
+        question: {
+          type: String,
+          required: true,
+        },
+        answer: {
+          type: String,
+          required: true,
+        },
+        timestamp: {
+          type: Date,
+          default: Date.now,
+        },
+      },
+    ],
+  },
+  { timestamps: true }
+);
+
+const Client = mongoose.model<IClient>("Client", clientSchema);
 
 export default Client;
