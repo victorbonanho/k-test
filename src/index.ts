@@ -19,6 +19,15 @@ mongoose
   .then(() => console.log("Conectado ao MongoDB"))
   .catch((err) => console.error("Erro ao conectar ao MongoDB", err));
 
+// Rota principal (/) para verificar se a API está no ar
+app.get("/", (req, res) => {
+  res.status(200).json({
+    message: "🚀 API k-test rodando com sucesso!",
+    status: "success",
+    timestamp: new Date().toISOString(),
+  });
+});
+
 // Usar as rotas
 app.use("/api/v1", apiRoutesV1);
 
