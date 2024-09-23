@@ -28,7 +28,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.get("/", (req, res) => {
   res.status(200).json({
     message:
-      "🚀 API k-test rodando com sucesso! Verifique o README.md para instruções de como utilizar.",
+      "🚀 API k-test rodando com sucesso! Verifique o README.md para instruções de como utilizar. Link no Github: https://github.com/victorbonanho/k-test",
     status: "success",
     timestamp: new Date().toISOString(),
   });
