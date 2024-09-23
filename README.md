@@ -125,7 +125,13 @@ Implementação contínua com Github Actions executando os testes unitário e de
 
 ## SWAGGER
 
-TODO
+- A documentação da API foi gerada e pode ser acessada através do Swagger. O Swagger facilita a visualização e interação com os endpoints, além de fornecer uma interface amigável para testar e explorar a API.
+
+- Como acessar a documentação Swagger:
+  A documentação Swagger está disponível na seguinte URL:
+
+- URL da Documentação: https://k-test.onrender.com/api-docs
+  Nessa interface, você poderá visualizar todos os endpoints disponíveis, seus métodos HTTP, os parâmetros necessários (query, body, headers), além das respostas esperadas.
 
 ## Licença
 
