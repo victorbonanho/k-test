@@ -1,0 +1,24 @@
+name: CI/CD Pipeline
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm run test
+
+      - name: Deploy
+        if: github.ref == 'refs/heads/main' && success() # Executa somente se o branch for main e os testes forem bem-sucedidos
+        env:
+          deploy_url: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+        run: curl "$deploy_url"
