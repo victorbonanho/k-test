@@ -129,7 +129,7 @@ TODO
 
 ## Licença
 
-Este projeto está licenciado sob a MIT License - veja o arquivo [LICENSE](LICENSE) para detalhes.
+Este projeto está licenciado sob a MIT License - veja o arquivo LICENSE.md para detalhes.
 
 ## Feedback e Contato
 
