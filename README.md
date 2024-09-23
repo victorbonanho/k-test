@@ -1,4 +1,4 @@
-# Fullstack Test API
+# Test for Kenlo API
 
 ## Descrição
 
@@ -17,13 +17,19 @@
 ## Pré-requisitos
 
 - Node.js (versão 18 ou superior)
-- MongoDB Compass (opcional, conectar com MONGODB_URI disponível no .env)
+- MongoDB Compass (opcional, conectar com MONGODB_URI disponível no .env -> Solicitar)
 - Docker (reqcomendado para rodar local)
 
 1. Clone o repositório:
 
-- git clone <URL_DO_REPOSITORIO>
-- cd <NOME_DO_REPOSITORIO>
+https:
+
+- git clone https://github.com/victorbonanho/k-test.git
+
+ssh:
+
+- git clone git@github.com:victorbonanho/k-test.git
+- cd k-test
 
 2. Instale as dependências:
 
@@ -33,7 +39,7 @@
 
 ## Usando Docker
 
-1. Execute os seguintes comandos para construir e rodar o projeto:
+1. Execute os seguintes comandos para construir e rodar o projeto localmente:
 
 - docker-compose down
 - docker-compose up --build
@@ -64,7 +70,7 @@
 
 1. Cadastre um cliente
 
-- http://localhost:3000/api/v1/clients/register
+- https://k-test.onrender.com/api/v1/auth/register
   Body exemplo:
   {
   "name": "João Silva",
@@ -75,7 +81,7 @@
 
 2. Faça o login
 
-- http://localhost:3000/api/v1/clients/login
+- https://k-test.onrender.com/api/v1/auth/login
   Body exemplo:
   {
   "email": "joao@example.com",
@@ -85,16 +91,27 @@
 3. Copie o token gerado no login e insira no "Authorization" -> "Bearer Token"
    e chame a API para conversar com o chatGPT:
 
-- http://localhost:3000/api/v1/clients/chat
+- https://k-test.onrender.com/api/v1/chat/conversation
   Body exemplo:
   {
   "question": "Qual é a capital da França?"
   }
 
+4. Verifique todos os clientes cadastrados ou delete um
+
+- https://k-test.onrender.com/api/v1/manage/clients
+- https://k-test.onrender.com/api/v1/manage/clients/:id
+
 ## Aplicação em produção diponível
+
+https://k-test.onrender.com
 
 ## CI/CD
 
+Implementação contínua com Github Actions executando os testes unitário e de integração como requisito para o Deploy e colocando as secrets diretamente pelo github.
+
+- Arquivo .github/workflows/ci-cd.yml
+
 ## SWAGGER
 
-**Sinta-se à vontade para ajustar qualquer parte conforme necessário! Se precisar de mais alguma coisa, é só avisar.**
+TODO
