@@ -8,6 +8,15 @@
 
 - Não é necessário rodar um banco de dados local pois estará disponível no MongoDB Atlas.
 
+## Tecnologias Usadas
+
+- **Node.js**: Para a construção da API.
+- **Typescript**: Para um código mais acertivo.
+- **MongoDB**: Para armazenamento de dados.
+- **Docker**: Para containerização e facilidade de deployment.
+- **Jest**: Para testes unitários e de integração.
+- **CI/CD com Github Actions**: Para deploys contínuos passando pelos testes.
+
 ## Arquitetura
 
 - **Model**: Define a estrutura dos dados (neste caso, um cliente).
@@ -102,9 +111,11 @@ ssh:
 - https://k-test.onrender.com/api/v1/manage/clients
 - https://k-test.onrender.com/api/v1/manage/clients/:id
 
-## Aplicação em produção diponível
+## DEPLOY - Aplicação em produção diponível
 
 https://k-test.onrender.com
+
+**Aplicação hospedada no render.com e utilizado docker para melhor compatibilidade com a integração contínua CI/CD**
 
 ## CI/CD
 
@@ -115,3 +126,11 @@ Implementação contínua com Github Actions executando os testes unitário e de
 ## SWAGGER
 
 TODO
+
+## Licença
+
+Este projeto está licenciado sob a MIT License - veja o arquivo [LICENSE](LICENSE) para detalhes.
+
+## Feedback e Contato
+
+- Para dúvidas ou feedback, entre em contato pelo e-mail: [victbonanho@gmail.com].
