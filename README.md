@@ -29,7 +29,7 @@
 
 - npm install
 
-3. O arquivo .env ficará diponível no repositório público até o término da avaliação deste teste.
+3. O arquivo .env ficará INDISPONÍVEL no repositório público pois a api do chatGPT bloqueia o uso em repositórios, para testar localmente anexe o .env enviado por e-mail ou solicite.
 
 ## Usando Docker
 
