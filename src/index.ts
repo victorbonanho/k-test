@@ -22,7 +22,8 @@ mongoose
 // Rota principal (/) para verificar se a API está no ar
 app.get("/", (req, res) => {
   res.status(200).json({
-    message: "🚀 API k-test rodando com sucesso!",
+    message:
+      "🚀 API k-test rodando com sucesso! Verifique o README.md para instruções de como utilizar.",
     status: "success",
     timestamp: new Date().toISOString(),
   });
