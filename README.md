@@ -106,6 +106,8 @@ ssh:
   "question": "Qual é a capital da França?"
   }
 
+  **A pergunta e a resposta com o chatgpt ficará salvo na mesma collection do usuário em um array de histórico**
+
 4. Verifique todos os clientes cadastrados ou delete um
 
 - https://k-test.onrender.com/api/v1/manage/clients
