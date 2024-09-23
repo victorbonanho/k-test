@@ -2,6 +2,8 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import apiRoutesV1 from "./routes/apiRoutesV1";
+import swaggerUi from "swagger-ui-express";
+import swaggerDocument from "../swagger.json";
 
 dotenv.config();
 
@@ -18,6 +20,9 @@ mongoose
   .connect(mongoUri)
   .then(() => console.log("Conectado ao MongoDB"))
   .catch((err) => console.error("Erro ao conectar ao MongoDB", err));
+
+// Serve a documentação Swagger na rota /api-docs
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Rota principal (/) para verificar se a API está no ar
 app.get("/", (req, res) => {

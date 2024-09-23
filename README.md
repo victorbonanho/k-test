@@ -119,7 +119,7 @@ https://k-test.onrender.com
 
 ## CI/CD
 
-Implementação contínua com Github Actions executando os testes unitário e de integração como requisito para o Deploy e colocando as secrets diretamente pelo github.
+Implementação contínua com Github Actions executando os testes unitário e de integração como requisito para o Deploy e colocando as secrets diretamente pelo github. Após o commit na main é feito o CI/CD e ao concluir é efetudao o deploy para o render.com
 
 - Arquivo .github/workflows/ci-cd.yml
 
